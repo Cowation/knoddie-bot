@@ -12,7 +12,7 @@ fs.readdir("./commands/", (err, files) => {
     let jsFile = files.filter(f => f.split(".").pop() === "js")
 
     if (jsFile.length <= 0 ) {
-        console.log("Couldn't find commands. NU!");
+        console.log("Couldn't find commands.");
         return;
     }
 
@@ -63,11 +63,11 @@ bot.on("message", (message) => {
                 break;
             case "play":
                 if (!args[1]) {
-                    message.reply("Please provide a link, no link , NO MUSIC.");
+                    message.reply("Please provide a YouTube video link.");
                     return;
                 }
                 if (!message.member.voiceChannel) {
-                    message.reply("Get into a voice channel, or else no music for you!");
+                    message.reply("Please enter the Voice Channel you want the video to be played in.");
                     return;
                 }
                 queue.push(args[1]);
@@ -88,43 +88,43 @@ bot.on("message", (message) => {
                     return message.reply("Please @mention a user to kick.").catch(console.error);
                 }
                 if (message.mentions.users.size > 1) {
-                    return message.reply("Please only @mention ONE USER. COME ON, STOP TESTING ME!")
+                    return message.reply("Please only @mention one user.")
                 }
                 let kickMember = message.guild.member(message.mentions.users.first());
                 if(!kickMember) {
-                    return message.reply("I don't see that user. I'm not blind, trust me.");
+                    return message.reply("That user doesn't exist.");
                 }
                 if(!message.guild.member(bot.user).hasPermission("KICK_MEMBERS")) {
                     return message.reply("I don't have permissions to execute the command.").catch(console.error);
                 }
                 kickMember.kick().then(function(member) {
-                    message.reply(`${member.user.username} was succesfully kicked. They can still come back for revenge...`).catch(console.error);
+                    message.reply(`${member.user.username} was succesfully kicked.`).catch(console.error);
                 }).catch(console.error)
                 break;
             case "ban":
                 if(message.mentions.users.size === 0) {
-                    return message.reply("Please @mention a user to ban. NO MENTION, NO BAN!").catch(console.error);
+                    return message.reply("Please @mention a user to ban.").catch(console.error);
                 }
                 if (message.mentions.users.size > 1) {
-                    return message.reply("Please only @mention ONE USER. COME ON, STOP TESTING ME!")
+                    return message.reply("Please only @mention one user.")
                 }
                 let banMember = message.guild.member(message.mentions.users.first());
                 if(!banMember) {
-                    return message.reply("I don't see that user. I'm not blind, trust me.");
+                    return message.reply("That user doesn't exist.");
                 }
                 if(!message.guild.member(bot.user).hasPermission("BAN_MEMBERS")) {
                     return message.reply("I don't have permissions to execute the command.").catch(console.error);
                 }
                 banMember.ban().then(function(member) {
-                    message.reply(`${member.user.username} was succesfully banned. MUAHAHAHA!`).catch(console.error);
+                    message.reply(`${member.user.username} was succesfully banned.`).catch(console.error);
                 }).catch(console.error)
                 break;
             case "mute":
                 if (message.mentions.users.size === 0) {
-                    return message.reply("Please @mention a user to mute. NO MENTION, NO MUTE!").catch(console.error);
+                    return message.reply("Please @mention a user to mute.").catch(console.error);
                 }
                 if (message.mentions.users.size > 1) {
-                    return message.reply("Please only @mention ONE USER. COME ON, STOP TESTING ME!")
+                    return message.reply("Please only @mention one user.")
                 }
                 if (!args[2]) {
                     return message.reply("Please specify a time in seconds for how long you want the user to be muted.");
@@ -132,14 +132,14 @@ bot.on("message", (message) => {
                 var muteMember = message.guild.member(message.mentions.users.first());
                 const muteRole = message.guild.roles.find("name", "Muted");
                 muteMember.addRole(muteRole.id);
-                message.reply(`HAHAHAH! ${muteMember.displayName} has been muted for ${ms(args[2])} seconds!`);
+                message.reply(`HAHAHAH! ${muteMember.displayName} has been muted for ${ms(args[2])} seconds.`);
                 setTimeout(function() {
                     muteMember.removeRole(muteRole.id);
-                    message.channel.send(`@${muteMember.user.tag} has been unmuted! Now be a good boy, OR ELSE!`);
+                    message.channel.send(`@${muteMember.user.tag} has been unmuted.`);
                 }, ms(args[2] + "s"));
                 break;
             default:
-                message.channel.send("That's not a command. Go commit die.");
+                message.reply("That's not a command.");
                 break;
         }
     }
