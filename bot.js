@@ -2,27 +2,6 @@ const Discord = require("discord.js");
 const ytdl = require("ytdl-core");
 const ms = require("ms");
 const bot = new Discord.Client();
-const fs = require("fs");
-
-bot.commands = new Discord.Collection();
-
-fs.readdir("./commands/", (err, files => {
-    if (err) console.log(err);
-
-    let jsFile = files.filter(f => f.split(".").pop() === "js")
-
-    if (jsFile.length <= 0 ) {
-        console.log("Couldn't find commands. NU!");
-        return;
-    }
-
-    jsFile.foreach((f, i) => {
-        let props = require(`./commands/${f}`);
-        console.lof(`${f} Loaded.`);
-
-        bot.commands.set(props.help.name, props);
-    });
-}))
 
 const token = "NDQ3NDM3NTk2ODY0MjgyNjI1.DeHkQA.y2bmWq0Cs2m2ew2sC-ZbWTAMdAU"; // Token for bot.
 
@@ -55,30 +34,7 @@ bot.on("message", (message) => {
             return;
         }
 
-        let commandfile = bot.commands.get(cmd.slice(prefix.length));
-        if (commandfile) commandfile.run(bot, message, args);
-
         switch (args[0].toLowerCase()) {
-            // case "help":
-            //     var embedTxt = "";
-            //     const txtTable = {
-            //         help: "Displays this help menu.",
-            //         play: "Plays a youtube video's audio in a Voice Channel.",
-            //         skip: "Skips a video in the queue.",
-            //         stop: "Disconnects the bot from the Voice Channel.",
-            //         kick: "Kicks a user by @mentioning.",
-            //         ban: "Bans a user by @mentioning.",
-            //         mute: "Mutes a user by @mentioning and specifying an amount of time."
-            //     }
-            //     for (var key in txtTable) {
-            //         embedTxt = embedTxt + `\n**${key}** - ` + txtTable[key];
-            //     }
-            //     var embed = new Discord.RichEmbed()
-            //         .setTitle("Knoddie Bot Help")
-            //         .setDescription(embedTxt)
-            //         .setColor("6835bf")
-            //     message.author.send(embed);
-            //     break;
             case "play":
                 if (!args[1]) {
                     message.reply("Please provide a link, no link , NO MUSIC.");
