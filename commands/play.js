@@ -12,6 +12,7 @@ module.exports.run = async(bot, message, args) => {
     }
     queue.push(args[1]);
     if (!message.guild.voiceConnection) message.member.voiceChannel.join().then(function(connection) {
+        console.log("wesdio");
         play(connection, message);
     });
 }
