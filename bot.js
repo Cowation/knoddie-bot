@@ -55,7 +55,7 @@ bot.on("message", (message) => {
             return;
         }
 
-        let commandfile = bot.commands.get(message.slice(prefix.length));
+        let commandfile = bot.commands.get(message.content.slice(prefix.length));
         if (commandfile) commandfile.run(bot, message, args);
 
         switch (args[0].toLowerCase()) {
