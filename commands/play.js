@@ -6,7 +6,7 @@ module.exports.run = async(bot, message, args) => {
         message.reply("Please provide a YouTube video link.");
         return;
     }
-    console.log(message.member);
+    console.log(message.member.name);
     if (!message.member.voiceChannel) {
         message.reply("Please enter the Voice Channel you want the video to be played in.");
         return;
