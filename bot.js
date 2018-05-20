@@ -26,14 +26,14 @@ fs.readdir("./commands/", (err, files) => {
 
 const token = "NDQ3NDM3NTk2ODY0MjgyNjI1.DeHkQA.y2bmWq0Cs2m2ew2sC-ZbWTAMdAU"; // Token for bot.
 
-var prefix = "!";
+prefix = "!";
 
-var queue = [];
+queue = [];
 
 bot.login(token);
 
 function play(connection, message) {
-    var server = message.guild.id;
+    server = message.guild.id;
     server.dispatcher = connection.playStream(ytdl(queue[0], {filter: "audioonly"}));
     queue.shift();
     server.dispatcher.on("end", function() {
@@ -62,18 +62,6 @@ bot.on("message", (message) => {
             case "help":
                 break;
             case "play":
-                if (!args[1]) {
-                    message.reply("Please provide a YouTube video link.");
-                    return;
-                }
-                if (!message.member.voiceChannel) {
-                    message.reply("Please enter the Voice Channel you want the video to be played in.");
-                    return;
-                }
-                queue.push(args[1]);
-                if (!message.guild.voiceConnection) message.member.voiceChannel.join().then(function(connection) {
-                    play(connection, message);
-                });
                 break;
             case "skip":
                 var server = message.guild.id;
