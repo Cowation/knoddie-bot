@@ -62,6 +62,18 @@ bot.on("message", (message) => {
             case "help":
                 break;
             case "play":
+                if (!args[1]) {
+                    message.reply("Please provide a YouTube video link.");
+                    return;
+                }
+                if (!message.member.voiceChannel) {
+                    message.reply("Please enter the Voice Channel you want the video to be played in.");
+                    return;
+                }
+                queue.push(args[1]);
+                if (!message.guild.voiceConnection) message.member.voiceChannel.join().then(function(connection) {
+                    play(connection, message);
+                });
                 break;
             case "skip":
                 var server = message.guild.id;
