@@ -59,39 +59,9 @@ bot.on("message", (message) => {
         if (commandfile) commandfile.run(bot, message, args);
 
         switch (args[0].toLowerCase()) {
-            // case "help":
-            //     var embedTxt = "";
-            //     const txtTable = {
-            //         help: "Displays this help menu.",
-            //         play: "Plays a youtube video's audio in a Voice Channel.",
-            //         skip: "Skips a video in the queue.",
-            //         stop: "Disconnects the bot from the Voice Channel.",
-            //         kick: "Kicks a user by @mentioning.",
-            //         ban: "Bans a user by @mentioning.",
-            //         mute: "Mutes a user by @mentioning and specifying an amount of time."
-            //     }
-            //     for (var key in txtTable) {
-            //         embedTxt = embedTxt + `\n**${key}** - ` + txtTable[key];
-            //     }
-            //     var embed = new Discord.RichEmbed()
-            //         .setTitle("Knoddie Bot Help")
-            //         .setDescription(embedTxt)
-            //         .setColor("6835bf")
-            //     message.author.send(embed);
-            //     break;
+            case "help":
+                break;
             case "play":
-                if (!args[1]) {
-                    message.reply("Please provide a link, no link , NO MUSIC.");
-                    return;
-                }
-                if (!message.member.voiceChannel) {
-                    message.reply("Get into a voice channel, or else no music for you!");
-                    return;
-                }
-                queue.push(args[1]);
-                if (!message.guild.voiceConnection) message.member.voiceChannel.join().then(function(connection) {
-                    play(connection, message);
-                });
                 break;
             case "skip":
                 var server = message.guild.id;
