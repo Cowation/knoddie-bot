@@ -1,6 +1,7 @@
 const Discord = require("discord.js");
 
 module.exports.run = async(bot, message, args) => {
+    console.log("wasd");
 	if (!args[1]) {
         message.reply("Please provide a YouTube video link.");
         return;
