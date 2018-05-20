@@ -6,8 +6,8 @@ const fs = require("fs");
 
 bot.commands = new Discord.Collection();
 
-fs.readdir("./commands/", (error, files => {
-    if (err) console.log(error);
+fs.readdir("./commands/", (err, files) => {
+    if (err) console.log(err);
 
     let jsFile = files.filter(f => f.split(".").pop() === "js")
 
@@ -22,7 +22,7 @@ fs.readdir("./commands/", (error, files => {
 
         bot.commands.set(props.help.name, props);
     });
-}))
+})
 
 const token = "NDQ3NDM3NTk2ODY0MjgyNjI1.DeHkQA.y2bmWq0Cs2m2ew2sC-ZbWTAMdAU"; // Token for bot.
 
