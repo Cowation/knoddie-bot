@@ -4,6 +4,8 @@ const ms = require("ms");
 const bot = new Discord.Client();
 const fs = require("fs");
 
+// This is a temporary bot. It will only be used on the Kevlar Discord Server.
+
 bot.commands = new Discord.Collection();
 
 fs.readdir("./commands/", (err, files) => {
@@ -24,7 +26,7 @@ fs.readdir("./commands/", (err, files) => {
     });
 })
 
-const token = process.env.BOT_TOKEN; // Token for bot.
+const token = process.env.BOT_TOKEN; // You actually thought I would leak this?
 
 prefix = "!";
 
@@ -52,7 +54,7 @@ bot.on("message", (message) => {
         var args = message.content.substring(prefix.length).split(" ");
 
         if (message.author.id !== "249691473820385281") {
-            return;
+            return; // This is a private bot only to be used by @TheCow#8526.
         }
 
         let commandfile = bot.commands.get(message.content.slice(prefix.length));
