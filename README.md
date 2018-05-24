@@ -1,6 +1,6 @@
 <div align="center">
   <p>
-    <a href="https://discord.gg/bRCvFy9"><img src="https://discordapp.com/api/guilds/222078108977594368/embed.png" alt="Discord server" /></a>
+    <a href="https://discord.gg/QKhbFtj"><img src="https://discordapp.com/api/guilds/446116616757837824/embed.png" alt="Discord server" /></a>
     <a href="https://www.npmjs.com/package/discord.js"><img src="https://img.shields.io/badge/invite-bot-blue.svg?longCache=true&style=flat" alt="NPM version" /></a>
     </a>
 </div>
