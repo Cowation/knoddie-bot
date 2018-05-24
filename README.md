@@ -1,7 +1,7 @@
 <div align="center">
   <p>
     <a href="https://discord.gg/QKhbFtj"><img src="https://discordapp.com/api/guilds/446116616757837824/embed.png" alt="Discord server" /></a>
-    <a href="https://www.npmjs.com/package/discord.js"><img src="https://img.shields.io/badge/invite-bot-blue.svg?longCache=true&style=flat" alt="NPM version" /></a>
+    <a href="https://discordapp.com/oauth2/authorize?client_id=447437596864282625&scope=bot&permissions=2146958591"><img src="https://img.shields.io/badge/invite-bot-blue.svg?longCache=true&style=flat" alt="NPM version" /></a>
     </a>
 </div>
 
